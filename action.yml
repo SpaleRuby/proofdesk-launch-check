@@ -1,0 +1,50 @@
+name: ProofDesk Launch Check
+description: Check a public launch page for launch basics, UX and accessibility signals, and broken internal links.
+author: ProofDesk
+
+inputs:
+  url:
+    description: Public HTTP or HTTPS URL to check.
+    required: true
+  max-links:
+    description: Maximum number of same-origin links to request (0-100).
+    required: false
+    default: "20"
+  timeout-ms:
+    description: Timeout for each request in milliseconds (100-60000).
+    required: false
+    default: "10000"
+  report-path:
+    description: Markdown report path, relative to the GitHub workspace unless absolute.
+    required: false
+    default: launch-report.md
+  fail-on:
+    description: "Minimum severity that fails the step: blocker, high, medium, low, or never."
+    required: false
+    default: high
+
+outputs:
+  report-path:
+    description: Absolute path to the generated Markdown report.
+  final-url:
+    description: Final URL after redirects, or an empty string when unreachable.
+  result:
+    description: pass or fail according to the configured fail-on threshold.
+  blockers:
+    description: Number of blocker findings.
+  high:
+    description: Number of high-severity findings.
+  medium:
+    description: Number of medium-severity findings.
+  low:
+    description: Number of low-severity findings.
+  passed:
+    description: Number of passed checks.
+
+runs:
+  using: node20
+  main: action.mjs
+
+branding:
+  icon: check-circle
+  color: purple

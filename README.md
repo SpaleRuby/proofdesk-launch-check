@@ -4,6 +4,45 @@ A zero-dependency, evidence-first check for public launch pages. It catches obje
 
 ![ProofDesk Launch Check terminal demo](docs/screenshot.png)
 
+## Use it as a GitHub Action
+
+The Action uses GitHub's built-in Node.js runtime. It does not run `npm install`, require a checkout step, or load third-party packages.
+
+```yaml
+name: Launch readiness
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  launch-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the public launch page
+        id: launch
+        uses: SpaleRuby/proofdesk-launch-check@v0.2.0
+        with:
+          url: https://example.com
+          max-links: 20
+          report-path: launch-report.md
+          fail-on: high
+```
+
+The step writes the complete report to the GitHub Job Summary and to `launch-report.md`. It also exposes `result`, `blockers`, `high`, `medium`, `low`, `passed`, `final-url`, and `report-path` outputs.
+
+| Input | Default | Purpose |
+| --- | --- | --- |
+| `url` | required | Public HTTP or HTTPS page to check |
+| `max-links` | `20` | Same-origin links to request; use `0` to skip |
+| `timeout-ms` | `10000` | Per-request timeout from 100 to 60000 ms |
+| `report-path` | `launch-report.md` | Markdown report path in the workspace |
+| `fail-on` | `high` | Fail on `blocker`, `high`, `medium`, `low`, or `never` |
+
+## Use it from the command line
+
 ```bash
 node launch-check.mjs https://example.com > launch-report.md
 ```
@@ -36,7 +75,7 @@ The process exits with code `2` when it finds a blocker or high-severity item, `
 
 ## Why this is deliberately small
 
-Lighthouse, axe, browser testing, security review, copy review, and real user testing solve different problems. This script does not pretend to replace them. It creates a fast, reproducible baseline from the server-returned page and labels its limitations in every Markdown report.
+Lighthouse, axe, browser-based accessibility testing, copy review, and real user testing solve different problems. This script does not pretend to replace them. It creates a fast, reproducible baseline from the server-returned page and labels its limitations in every Markdown report.
 
 Automated findings can also be false positives. Verify each one before opening an issue or contacting a maintainer.
 
@@ -59,10 +98,10 @@ npm test
 
 ## Need the human-readable layer?
 
-[ProofDesk](https://spaleruby.github.io/proofdesk-orders/) offers a $10 introductory launch audit. Payment is due only if the preview contains at least three distinct, reproducible findings. The workflow is transparently AI-assisted, and the report is checked before delivery.
+[ProofDesk](https://spaleruby.github.io/proofdesk-orders/) offers a $10 introductory launch review. Payment is due only if the preview contains at least three distinct, reproducible findings. The workflow is transparently AI-assisted, and the report is checked before delivery.
 
 ## Responsible use
 
-Scan only public pages you are allowed to request. Keep link limits small, identify the tool through its user agent, and never use findings as pressure, fear, or a fabricated security claim.
+Check only public pages you are allowed to request. Keep link limits small, identify the tool through its user agent, verify automated findings before filing an issue, and never use them as pressure.
 
 MIT licensed.

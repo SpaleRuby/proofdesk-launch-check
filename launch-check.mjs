@@ -104,12 +104,12 @@ async function fetchDocument(url, timeoutMs) {
   const declaredLength = Number(response.headers.get("content-length") ?? 0);
   if (declaredLength > MAX_HTML_BYTES) {
     throw new Error(
-      `Document is ${declaredLength} bytes; the safety limit is ${MAX_HTML_BYTES}.`,
+      `Document is ${declaredLength} bytes; the document-size limit is ${MAX_HTML_BYTES}.`,
     );
   }
   const text = await response.text();
   if (Buffer.byteLength(text) > MAX_HTML_BYTES) {
-    throw new Error(`Document exceeds the ${MAX_HTML_BYTES}-byte safety limit.`);
+    throw new Error(`Document exceeds the ${MAX_HTML_BYTES}-byte document-size limit.`);
   }
   return {
     response,
@@ -141,6 +141,7 @@ async function lightweightStatus(url, timeoutMs) {
 }
 
 function collectInternalLinks(html, baseUrl, maxLinks) {
+  if (maxLinks === 0) return [];
   const links = [];
   const seen = new Set();
   for (const tag of tags(html, "a")) {
@@ -526,7 +527,7 @@ export function toMarkdown(report) {
     "",
     "---",
     "",
-    "Automated checks are evidence, not a complete accessibility, security, UX, or conversion audit.",
+    "Automated checks are evidence, not a complete accessibility, UX, SEO, or conversion review.",
   );
   return lines.join("\n");
 }

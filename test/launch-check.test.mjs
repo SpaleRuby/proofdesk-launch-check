@@ -59,3 +59,28 @@ test("returns a blocker report instead of throwing when the URL is unreachable",
   assert.equal(report.summary.blocker, 1);
   assert.equal(report.findings[0].check, "Page fetch");
 });
+
+test("skips internal link requests when maxLinks is zero", async () => {
+  let internalRequests = 0;
+  await withServer(
+    (request, response) => {
+      if (request.url === "/should-not-be-requested") internalRequests += 1;
+      response.writeHead(200, { "content-type": "text/html; charset=utf-8" });
+      response.end(`<!doctype html>
+        <html lang="en">
+          <head><title>A complete launch page title</title></head>
+          <body><a href="/should-not-be-requested">Internal link</a></body>
+        </html>`);
+    },
+    async (origin) => {
+      const report = await scanUrl(origin, { maxLinks: 0, timeoutMs: 2_000 });
+      assert.equal(internalRequests, 0);
+      assert.deepEqual(report.linkChecks, []);
+      assert.ok(
+        report.passes.some(
+          (item) => item.check === "Internal links" && item.observed.startsWith("0 checked"),
+        ),
+      );
+    },
+  );
+});
