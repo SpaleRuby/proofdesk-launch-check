@@ -1,0 +1,15 @@
+{
+  "name": "proofdesk-launch-check",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Zero-dependency launch-readiness checks for public web pages.",
+  "type": "module",
+  "scripts": {
+    "check": "node launch-check.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
