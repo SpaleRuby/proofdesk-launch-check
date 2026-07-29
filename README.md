@@ -8,6 +8,13 @@ A zero-dependency, evidence-first check for public launch pages. It catches obje
 node launch-check.mjs https://example.com > launch-report.md
 ```
 
+Download the single-file release if you do not want to clone the repository:
+
+```bash
+curl -LO https://github.com/SpaleRuby/proofdesk-launch-check/releases/latest/download/launch-check.mjs
+node launch-check.mjs https://example.com
+```
+
 Requires Node.js 20 or newer. Nothing is installed and no account is required.
 
 ## What it checks
