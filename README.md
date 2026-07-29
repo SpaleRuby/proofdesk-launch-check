@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Check the public launch page
         id: launch
-        uses: SpaleRuby/proofdesk-launch-check@v0.2.0
+        uses: SpaleRuby/proofdesk-launch-check@v0.2.1
         with:
           url: https://example.com
           max-links: 20
