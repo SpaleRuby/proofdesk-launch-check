@@ -37,7 +37,6 @@ The broader ProofDesk launch-QA method has produced these public, value-first re
 
 - [GitCharta: missing canonical and social metadata](https://github.com/ThierryRakotomanana/GitCharta/issues/41)
 - [BeastLab Multi-LLM: Codex JSONL parser discards successful responses](https://github.com/beastlabai/multi-llm-plugin/issues/2)
-- [AgentSnap: setup writes an API key to an unignored `.env`](https://github.com/iamfaham/AgentSnap/issues/2)
 - [HNewhere: URL normalization merges case-sensitive resources](https://github.com/twalichiewicz/HNewhere/issues/24)
 - [Tokimeter: a weekly Codex limit is labeled as the 5-hour window](https://github.com/toshipepe/tokimeter/issues/20)
 
