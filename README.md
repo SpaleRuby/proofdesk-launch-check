@@ -31,6 +31,18 @@ Lighthouse, axe, browser testing, security review, copy review, and real user te
 
 Automated findings can also be false positives. Verify each one before opening an issue or contacting a maintainer.
 
+## Inspect the evidence standard
+
+The broader ProofDesk launch-QA method has produced these public, value-first reports. They are not paid-client claims:
+
+- [GitCharta: missing canonical and social metadata](https://github.com/ThierryRakotomanana/GitCharta/issues/41)
+- [BeastLab Multi-LLM: Codex JSONL parser discards successful responses](https://github.com/beastlabai/multi-llm-plugin/issues/2)
+- [AgentSnap: setup writes an API key to an unignored `.env`](https://github.com/iamfaham/AgentSnap/issues/2)
+- [HNewhere: URL normalization merges case-sensitive resources](https://github.com/twalichiewicz/HNewhere/issues/24)
+- [Tokimeter: a weekly Codex limit is labeled as the 5-hour window](https://github.com/toshipepe/tokimeter/issues/20)
+
+Each report contains reproduction evidence, impact, and a proposed correction.
+
 ## Run the tests
 
 ```bash
