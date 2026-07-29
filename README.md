@@ -2,6 +2,8 @@
 
 A zero-dependency, evidence-first check for public launch pages. It catches objective problems before a Product Hunt, Show HN, directory, or customer launch without uploading the URL or report to a third-party dashboard.
 
+![ProofDesk Launch Check terminal demo](docs/screenshot.png)
+
 ```bash
 node launch-check.mjs https://example.com > launch-report.md
 ```
