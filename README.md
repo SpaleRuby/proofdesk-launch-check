@@ -4,6 +4,11 @@ A zero-dependency, evidence-first check for public launch pages. It catches obje
 
 ![ProofDesk Launch Check terminal demo](docs/screenshot.png)
 
+> **Want a checked report instead of raw automation?**
+> The **$10 ProofDesk Launch QA Sprint** covers one public site, up to five pages, with 3–5 ranked findings and one complete sample before payment. **You pay $0 if the preview does not contain at least three distinct, reproducible findings.**
+>
+> [See scope and verified work](https://spaleruby.github.io/proofdesk-orders/) · [Request Launch QA on GitHub (sign-in required)](https://github.com/SpaleRuby/proofdesk-orders/issues/new?template=order.yml)
+
 ## Use it as a GitHub Action
 
 The Action uses GitHub's built-in Node.js runtime. It does not run `npm install`, require a checkout step, or load third-party packages.
