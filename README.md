@@ -100,7 +100,7 @@ npm test
 
 [ProofDesk](https://spaleruby.github.io/proofdesk-orders/) offers a $10 introductory launch review. Payment is due only if the preview contains at least three distinct, reproducible findings. The workflow is transparently AI-assisted, and the report is checked before delivery.
 
-For agents and scripts, the experimental [ProofDesk x402 API](https://github.com/SpaleRuby/proofdesk-audit-api) returns a deterministic JSON report for $0.10 USDC on Base or Solana. Its repository includes a free example response, OpenAPI 3.1 description, and a clearly labeled temporary live demo.
+For agents and scripts, the experimental [ProofDesk x402 API](https://github.com/SpaleRuby/proofdesk-audit-api) returns a deterministic JSON report for $0.04 USDC on Base or Solana. Its repository includes a free example response, OpenAPI 3.1 description, and a clearly labeled temporary live demo.
 
 ## Responsible use
 
